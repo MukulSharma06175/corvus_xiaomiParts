@@ -22,6 +22,7 @@ PRODUCT_PACKAGES += \
     XiaomiParts \
     XiaomiDoze \
     Dirac \
+    Parts \
     libaudioparsers
 
 PRODUCT_COPY_FILES += \
