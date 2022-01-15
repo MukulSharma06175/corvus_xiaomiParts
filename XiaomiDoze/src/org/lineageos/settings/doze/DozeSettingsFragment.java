@@ -17,7 +17,6 @@
 
 package org.lineageos.settings.doze;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -27,26 +26,21 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
 import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
 import org.lineageos.settings.doze.R;
 
-public class DozeSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener,
-        CompoundButton.OnCheckedChangeListener {
+import com.android.settingslib.widget.MainSwitchPreference;
+import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
-    private TextView mTextView;
-    private View mSwitchBar;
+    public class DozeSettingsFragment extends PreferenceFragment implements
+        Preference.OnPreferenceChangeListener, OnMainSwitchChangeListener {
+
+    private MainSwitchPreference mSwitchBar;
 
     private SwitchPreference mAlwaysOnDisplayPreference;
 
@@ -60,8 +54,6 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.doze_settings);
-        final ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences prefs = getActivity().getSharedPreferences("doze_settings",
                 Activity.MODE_PRIVATE);
